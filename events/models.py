@@ -7,7 +7,7 @@ from payments.models import Product
 class Event(models.Model):
     event_name = models.CharField(max_length=200)
     event_date = models.DateTimeField("event date")
-    url = models.CharField(max_length=200, default="https://cometrobotics.org")
+    url = models.CharField(max_length=200, default="https://utdrobosub.org")
     def __str__(self):
         return self.event_name
     

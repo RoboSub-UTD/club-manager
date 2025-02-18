@@ -198,13 +198,13 @@ Net ID: {net_id}
 
 If the above information is correct, click on the below link to connect your Discord account to your Robosub account.
 
-https://portal.cometrobotics.org/accounts/link/{account_link.uuid}
+https://portal.utdrobosub.org/accounts/link/{account_link.uuid}
 
 If the name is incorrect, reply to this email and we'll get back to you. If this was not you, you can safely ignore this email.
 
 Thanks!
 """,
-            "cometrobotics@utdallas.edu",
+            "noreply@mail.utdrobosub.org",
             [email],
             fail_silently=False,
             html_message=f"""
@@ -219,9 +219,9 @@ Net ID: {net_id}</p>
 
 <p>If the above information is correct, click the button below or the link to connect your Discord account to your Robosub account.</p>
 
-<a href="https://portal.cometrobotics.org/accounts/link/{account_link.uuid}"><button style="border: solid #950000 3px;padding: 1em; border-radius: 10px; background-color:#bf1e2e; color: white;"><strong>Link Account</strong></button></a>
+<a href="https://portal.utdrobosub.org/accounts/link/{account_link.uuid}"><button style="border: solid #950000 3px;padding: 1em; border-radius: 10px; background-color:#bf1e2e; color: white;"><strong>Link Account</strong></button></a>
 
-<br><br><a href="https://portal.cometrobotics.org/accounts/link/{account_link.uuid}">https://portal.cometrobotics.org/accounts/link/{account_link.uuid}</a>
+<br><br><a href="https://portal.utdrobosub.org/accounts/link/{account_link.uuid}">https://portal.utdrobosub.org/accounts/link/{account_link.uuid}</a>
 
 <p>If the name is incorrect, reply to this email and we'll get back to you. If this was not you, you can safely ignore this email.</p>
 
@@ -271,7 +271,7 @@ async def profile(ctx: discord.ApplicationContext):
 
         body += f"\n**Past Memberships:** {past_terms_info}"
 
-        return body, f'https://portal.cometrobotics.org/payments/{current_term.product.id}/pay' if not current_payment else None, current_term.name
+        return body, f'https://portal.utdrobosub.org/payments/{current_term.product.id}/pay' if not current_payment else None, current_term.name
     membership_status, due_paying_url, term_name = await sync_to_async(get_membership_status)(user_profile)
 
 
@@ -288,7 +288,7 @@ class ProfileActionsView(discord.ui.View):
     def __init__(self, term_name: str, due_paying_url: str | None, user_profile: UserProfile) -> None:
         super().__init__()
         self.user_profile = user_profile
-        self.add_item(discord.ui.Button(label=f"Pay Dues for {term_name}" if due_paying_url else f"Dues paid for {term_name} :)", url=due_paying_url or 'https://cometrobotics.org', disabled=not due_paying_url))
+        self.add_item(discord.ui.Button(label=f"Pay Dues for {term_name}" if due_paying_url else f"Dues paid for {term_name} :)", url=due_paying_url or 'https://utdrobosub.org', disabled=not due_paying_url))
 
         # # TODO: Implement interaction for gender
         # discord_gender = [discord.SelectOption(label=str(obj._name_), value=str(obj)) for obj in UserProfile.GenderChoice]
@@ -382,7 +382,7 @@ async def pay(ctx: discord.ApplicationContext):
             # ctx.respond("No active terms available for payment.",  ephemeral=True)  # TODO: move to separate func to await
             pass
 
-        payment_links = [(f"[Pay for {term.name}](https://portal.cometrobotics.org/payments/{term.product.id}/pay/)" + (' (you\'ve already paid this term\'s dues)' if user.is_member(term)[1] else '')) for term in active_terms]
+        payment_links = [(f"[Pay for {term.name}](https://portal.utdrobosub.org/payments/{term.product.id}/pay/)" + (' (you\'ve already paid this term\'s dues)' if user.is_member(term)[1] else '')) for term in active_terms]
         return "\n".join(payment_links)
 
     payment_links = await sync_to_async(get_payment_links)()
@@ -493,7 +493,7 @@ async def camera(ctx: discord.ApplicationContext):
         )
     else:
         # url = "http://eric1:8080/stream" # TODO: probably /snapshot instead of /stream
-        url = "http://eric2.lab.cometrobotics.org:8001/snapshot"
+        url = "http://eric2.lab.utdrobosub.org:8001/snapshot"
         img = discord.File(io.BytesIO(requests.get(url).content), "stream.jpg")
         await message.edit_original_response(content="", file=img)
 
