@@ -1,5 +1,5 @@
 [Unit]
-Description=Discord bot for Comet Robotics
+Description=Discord bot for Robosub
 
 [Service]
 User=root

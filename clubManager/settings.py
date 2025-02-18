@@ -73,7 +73,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Comet Robotics Club Manager API',
+    'TITLE': 'Robosub Club Manager API',
     'DESCRIPTION': 'Link shortener, attendance tracking, Discord bot, and other utilities for managing club operations',
     'VERSION': '0.1.0',
     'SERVE_INCLUDE_SCHEMA': True,
