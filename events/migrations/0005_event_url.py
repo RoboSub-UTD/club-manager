@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='url',
-            field=models.CharField(default='https://cometrobotics.org', max_length=200),
+            field=models.CharField(default='https://utdrobosub.org', max_length=200),
         ),
     ]
