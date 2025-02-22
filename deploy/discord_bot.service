@@ -4,7 +4,7 @@ Description=Discord bot for Robosub
 [Service]
 User=root
 WorkingDirectory=/root/club-manager
-ExecStart=/root/club-manager/venv/bin/pipenv --python /root/.pyenv/shims/python run python discord_bot.py
+ExecStart=/root/club-manager/venv/bin/pipenv --python /root/club-manager/venv/bin/python run python discord_bot.py
 
 [Install]
 WantedBy=multi-user.target
