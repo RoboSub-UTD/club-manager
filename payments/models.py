@@ -65,6 +65,7 @@ class Payment(ComputedFieldsModel):
         paypal = 'paypal', _('PayPal Payment (LEGACY - DO NOT USE FOR NEW PAYMENTS)')
         venmo = 'venmo', _('Venmo Payment (LEGACY - DO NOT USE FOR NEW PAYMENTS)')
         cashapp = 'cashapp', _('Cash App Payment (LEGACY - DO NOT USE FOR NEW PAYMENTS)')
+        zelle = 'zelle', _('Zelle Payment (LEGACY - DO NOT USE FOR NEW PAYMENTS)')
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     
