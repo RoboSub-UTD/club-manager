@@ -24,7 +24,7 @@ def parse_csv_and_store_data(file_path):
                 # first_name = row['First Name'].strip()
                 # last_name = row['Last Name'].strip()
                 name = row["name"].strip()
-                first_name, ..., last_name = name.split(' ')
+                first_name, last_name = name.split(' ', 1)
 
                 # Create or get the user
                 user, created = User.objects.get_or_create(
