@@ -204,7 +204,7 @@ If the name is incorrect, reply to this email and we'll get back to you. If this
 
 Thanks!
 """,
-            "noreply@mail.utdrobosub.org",
+            "noreply@utdrobosub.org",
             [email],
             fail_silently=False,
             html_message=f"""
