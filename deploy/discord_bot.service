@@ -1,10 +1,10 @@
 [Unit]
-Description=Discord bot for Comet Robotics
+Description=Discord bot for Robosub
 
 [Service]
 User=root
-WorkingDirectory=/root/clubManager
-ExecStart=pipenv --python /root/.pyenv/shims/python run python discord_bot.py
+WorkingDirectory=/root/club-manager
+ExecStart=/root/club-manager/venv/bin/pipenv --python /root/club-manager/venv/bin/python run python discord_bot.py
 
 [Install]
 WantedBy=multi-user.target

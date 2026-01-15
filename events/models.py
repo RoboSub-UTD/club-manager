@@ -11,7 +11,7 @@ from django.db.models import F
 class Event(models.Model):
     event_name = models.CharField(max_length=200)
     event_date = models.DateTimeField("event date")
-    url = models.CharField(max_length=200, default="https://cometrobotics.org")
+    url = models.CharField(max_length=200, default="https://utdrobosub.org")
 
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="events", null=True, blank=True)
     teams = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="events", null=True, blank=True)

@@ -8,12 +8,12 @@ jobs:
     steps:
       - name: Check current directory
         run: pwd
-        working-directory: /root/clubManager
+        working-directory: /root/club-manager
 
       - name: Pull latest changes
         run: git pull
-        working-directory: /root/clubManager
+        working-directory: /root/club-manager
 
       - name: Run deployment script
         run: ./deploy/run.sh
-        working-directory: /root/clubManager
+        working-directory: /root/club-manager
