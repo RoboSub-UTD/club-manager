@@ -5,6 +5,7 @@ from clubManager import settings
 
 class PaymentSignInForm(forms.Form):
     payment_choices = [
+        ("zelle", "Zelle Payment"),
         ("cash", "In-Person Cash Payment"),
     ]
     if settings.ENABLE_SQUARE_PAYMENTS:

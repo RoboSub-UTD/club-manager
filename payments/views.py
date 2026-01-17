@@ -96,6 +96,17 @@ class ChooseUserView(View):
             else:
                 if payment_choice == "square_api":
                     return redirect("payment_form", product_id=product_id, user_id=user.id)
+                elif payment_choice == "zelle":
+                    with transaction.atomic():
+                        payment = Payment(
+                            method=Payment.Method.zelle,
+                            user=user,
+                            amount_cents=product.amount_cents,
+                        )
+                        payment.save()
+                        purchased_product = PurchasedProduct(product=product, payment=payment)
+                        purchased_product.save()
+                    return redirect("payment_success", payment_id=purchased_product.payment.id)
                 elif payment_choice == "cash":
                     with transaction.atomic():
                         payment = Payment(
