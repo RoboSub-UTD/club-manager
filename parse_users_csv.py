@@ -17,16 +17,16 @@ from events.models import UserIdentification
 
 
 def parse_csv_and_store_data(file_path):
-    with open(file_path, newline='') as csvfile:
+    with open(file_path, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             try:
-                comet_card_id = row['comet_card_id'].strip()
+                comet_card_id = row["comet_card_id"].strip()
                 net_id = row["net_id"].strip().lower()
                 # first_name = row['First Name'].strip()
                 # last_name = row['Last Name'].strip()
                 name = row["name"].strip()
-                first_name, last_name = name.split(' ', 1)
+                first_name, last_name = name.split(" ", 1)
 
                 # Create or get the user
                 user, created = User.objects.get_or_create(
@@ -37,14 +37,9 @@ def parse_csv_and_store_data(file_path):
                     },
                     username=net_id,
                 )
-                
+
                 UserIdentification.objects.update_or_create(
-                    defaults={
-                        'user': user,
-                        'student_id': comet_card_id
-                    },
-                    user=user,
-                    student_id=comet_card_id
+                    defaults={"user": user, "student_id": comet_card_id}, user=user, student_id=comet_card_id
                 )
             except Exception as e:
                 print(f"Error processing row: {row}")
@@ -52,4 +47,4 @@ def parse_csv_and_store_data(file_path):
 
 
 # Call the function with the path to your CSV file
-parse_csv_and_store_data('users.csv')
+parse_csv_and_store_data("users.csv")
