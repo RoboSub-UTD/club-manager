@@ -9,5 +9,10 @@ ln -s $BASE_PATH/discord_bot.service /etc/systemd/system/discord_bot.service
 ln -s $BASE_PATH/club-manager.nginx.conf /etc/nginx/sites-available/club-manager
 ln -s /etc/nginx/sites-available/club-manager /etc/nginx/sites-enabled/club-manager
 
+
+systemctl enable discord_bot.service
+systemctl enable gunicorn.socket
+systemctl enable gunicorn.service
+
 rm /etc/nginx/sites-enabled/default
 sudo systemctl daemon-reload

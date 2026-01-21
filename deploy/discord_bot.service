@@ -1,5 +1,6 @@
 [Unit]
 Description=Discord bot for Robosub
+Wants=gunicorn.service
 
 [Service]
 User=root
